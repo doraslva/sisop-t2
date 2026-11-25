@@ -1,10 +1,11 @@
 {
   "integrantes": [
-    {"nome": "Nome Completo do Integrante 1"}
+    {"nome": "Nome Completo do Integrante 1"},
+    {"nome": "Nome Completo do Integrante 2"}
   ],
-  "repositorio": "https://github.com/usuario/nome-do-repositorio",
-  "modulos": [],
+  "repositorio": "https://github.com/doraslva/sisop-t2",
+  "modulos": ["M1"],
   "integracao": false,
   "bonus_flash": false,
-  "observacoes": ""
+  "observacoes": "O projeto está na pasta Trabalho_IO_2026II/ do repositório. Análise complementar (não oficial) em analise_extra.py e resultados/extras/."
 }

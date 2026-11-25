@@ -36,6 +36,24 @@ class Escalonador:
         raise NotImplementedError
 
 
+def _mais_proxima(fila, cabeca, indices):
+    """Índice (em `fila`) da requisição de menor distância até a cabeça, entre `indices`.
+    Empate: vence o menor índice (a que chegou antes). None se `indices` estiver vazio."""
+    melhor = None
+    for i in indices:
+        if melhor is None or abs(fila[i].cilindro - cabeca) < abs(fila[melhor].cilindro - cabeca):
+            melhor = i
+    return melhor
+
+
+def _a_frente(fila, cabeca, direcao):
+    """Índices das requisições à frente da cabeça na direção dada. O próprio cilindro da
+    cabeça conta como "à frente" nas duas direções."""
+    if direcao > 0:
+        return [i for i, r in enumerate(fila) if r.cilindro >= cabeca]
+    return [i for i, r in enumerate(fila) if r.cilindro <= cabeca]
+
+
 class FCFS(Escalonador):
     """First-Come, First-Served: atende na ordem de chegada. FORNECIDO."""
     nome = "FCFS"
@@ -54,7 +72,13 @@ class SSTF(Escalonador):
     nome = "SSTF"
 
     def escolher(self, fila, cabeca, direcao, agora, max_cilindro):
-        raise NotImplementedError("TODO (núcleo N2): implementar o SSTF")
+        i = _mais_proxima(fila, cabeca, range(len(fila)))
+        alvo = fila[i].cilindro
+        if alvo > cabeca:
+            direcao = +1
+        elif alvo < cabeca:
+            direcao = -1
+        return i, direcao, []
 
 
 class SCAN(Escalonador):
@@ -67,7 +91,16 @@ class SCAN(Escalonador):
     nome = "SCAN"
 
     def escolher(self, fila, cabeca, direcao, agora, max_cilindro):
-        raise NotImplementedError("TODO (núcleo N2): implementar o SCAN")
+        i = _mais_proxima(fila, cabeca, _a_frente(fila, cabeca, direcao))
+        if i is not None:
+            return i, direcao, []
+        # Nada à frente: vai até a borda da direção atual, inverte e atende a mais próxima
+        # na nova direção (que existe, porque todas as pendentes estão atrás da cabeça).
+        borda = max_cilindro if direcao > 0 else 0
+        passar_por = [borda] if cabeca != borda else []
+        direcao = -direcao
+        i = _mais_proxima(fila, borda, _a_frente(fila, borda, direcao))
+        return i, direcao, passar_por
 
 
 # ------------------------------------------------------------------ módulo M2

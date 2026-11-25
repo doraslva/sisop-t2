@@ -1,0 +1,13 @@
+carga,escalonador,utilizacao_disco,servico_medio_ms,deslocamento_por_req,fila_media_na_escolha,idas_a_borda
+sequencial,FCFS,1.0000,16.2661,3592.0465,628.8985,0
+sequencial,SSTF,0.9489,5.6654,1168.1825,2.9890,0
+sequencial,SCAN,0.9852,5.8852,1234.5345,3.9575,493
+aleatoria,FCFS,0.8628,10.4647,1658.2360,4.3435,0
+aleatoria,SSTF,0.7781,9.4376,1315.8570,1.9630,0
+aleatoria,SCAN,0.8966,10.8855,1686.3400,2.7225,674
+concentrada,FCFS,0.6944,8.2857,932.0820,1.9590,0
+concentrada,SSTF,0.6629,7.9090,806.5150,1.5995,0
+concentrada,SCAN,0.9064,10.8286,1669.3540,2.8765,663
+rajadas,FCFS,0.8766,10.5022,1670.7450,25.5000,0
+rajadas,SSTF,0.4897,5.8002,104.9055,25.5000,0
+rajadas,SCAN,0.4900,5.8034,99.9775,25.5000,38
