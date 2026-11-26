@@ -1,6 +1,6 @@
 # Relatório — SimES: simulador de E/S e de sistema de arquivos
 
-**Integrantes:** [nome completo de TODOS os integrantes, separados por vírgula]
+**Integrantes:** Isadora Santos da Silva e Nathan Schmitt
 
 **Repositório:** https://github.com/doraslva/sisop-t2 (o projeto está na pasta `Trabalho_IO_2026II/`)
 
